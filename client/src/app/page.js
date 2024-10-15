@@ -52,13 +52,52 @@ export default function Home() {
       <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
         <a
           className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="/react-working"
+          href="/react-working-1"
           target="_blank"
           rel="noopener noreferrer"
         >
-         React Working
+          React Working 1
         </a>
-        
+        <a
+          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
+          href="/react-working-2"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          React Working 2
+        </a>
+        <a
+          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
+          href="/react-working-3"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          React Working 3
+        </a>
+        <a
+          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
+          href="/react-working-4"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          React Working 4
+        </a>
+        <a
+          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
+          href="/react-working-5"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          React Working 5
+        </a>
+        <a
+          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
+          href="/react-working-6"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          React Working 6
+        </a>
       </footer>
     </div>
   );

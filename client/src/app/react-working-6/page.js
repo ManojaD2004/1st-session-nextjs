@@ -13,13 +13,20 @@ export default function Home() {
     { msg: "Hi", userName: "Mark" },
     { msg: "Hey", userName: "You" },
   ]);
+  useEffect(() => {
+    const storeMessages = window.localStorage.getItem("chatMessages");
+    if (storeMessages) {
+      setChatMessages(JSON.parse(storeMessages));
+      return;
+    }
+  }, []);
   return (
     <main className="py-12 flex items-center flex-col justify-evenly font-[family-name:var(--font-geist-sans)]">
       <div className="bg-slate-800 p-10 space-y-6 text-5xl w-[90%] h-auto">
         <h1>Chat App!</h1>
-        <div className="flex flex-row justify-between">
+        <div className="flex flex-row justify-between w-full">
           <input
-            className="border-0 outline-0 p-2 rounded-lg text-black"
+            className="border-0 outline-0 p-2 rounded-lg min-w-0 text-black"
             value={newMessage}
             onChange={(e) => {
               setNewMessage(e.target.value);
@@ -32,13 +39,20 @@ export default function Home() {
                 window.alert("Please Enter a message!");
                 return;
               }
-              setChatMessages([
+              const newChatMessages = [
                 ...chatMessages,
                 { msg: newMessage, userName: person },
-              ]);
+              ];
+              setChatMessages(newChatMessages);
+              if (window) {
+                window.localStorage.setItem(
+                  "chatMessages",
+                  JSON.stringify(newChatMessages)
+                );
+              }
               setNewMessage("");
             }}
-            className="bg-slate-600 rounded-xl p-6 hover:bg-slate-700"
+            className="bg-slate-600 rounded-xl p-6  hover:bg-slate-700"
           >
             Send Messages!
           </button>
