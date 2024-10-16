@@ -2,7 +2,8 @@
 import React, { useEffect, useRef, useState } from "react";
 
 // A Simply Cart App
-// 1. Change a simple string element to a object for better handling bigger elements!
+// 1. Change a simple string element to a object for better handling bigger elements, add count variable
+// to the cart item objects!
 // 2. Add delete button, to delete that item from cart!
 
 export default function Home() {
@@ -30,6 +31,8 @@ export default function Home() {
             // const newCart = [...cart];
             // newCart.push(newItem);
             // setCart(newCart);
+            //
+            // Perfect way of doing it!
             setCart([...cart, newItem]);
             //
             // Clear the Input Field
@@ -42,7 +45,7 @@ export default function Home() {
         <h2 className="text-green-500">Your Items in the Cart!</h2>
         {cart.map((ele, index) => (
           <div className="text-red-300" key={index}>
-            {index + 1}. {ele}
+            {index + 1}. {ele} - <span className="text-red-600"> count: 1</span>
           </div>
         ))}
       </div>

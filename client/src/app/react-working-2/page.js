@@ -8,49 +8,78 @@ export default function Home() {
   const paraRef = useRef();
   useEffect(() => {
     // use effect do job after rendering the page, in the end it does its job
-    // console.log("Do job at the end!");
-    let intervalId;
-    if (paraRef.current) {
-      // Get Any Properties
-      // console.log(paraRef.current.style);
-      //
-      // Interval wrong way of doing
-      // setInterval(() => {
-      //   paraRef.current.style.color = `rgb(255, ${
-      //     (timesClicked1 * 10) % 255
-      //   }, ${(timesClicked1 * 30) % 255})`;
-      //   // setTimesClicked1(timesClicked1 + 1);
-      //   setTimesClicked1((prevVal) => prevVal + 1);
-      //   console.log("Change!", timesClicked1);
-      // }, 100);
-      //
-      // Interval correct way of doing
+    console.log("Do job at the end!");
+  }, []);
+  // useEffect(() => {
+  //   // Infinity Loop
+  //   setTimesClicked1(timesClicked1 + 1);
+  //   if (paraRef.current) {
+  //     paraRef.current.style.color = `rgb(255, ${(timesClicked1 * 10) % 255}, ${
+  //       (timesClicked1 * 30) % 255
+  //     })`;
+  //   }
+  //   console.log("Change!", timesClicked1);
+  // }, [timesClicked1]);
+  // useEffect(() => {
+  //   if (paraRef.current) {
+  //     // Get Any Properties
+  //     // console.log(paraRef.current.style);
+  //     //
+  //     // Interval wrong way of doing
+  //     setInterval(() => {
+  //       paraRef.current.style.color = `rgb(255, ${
+  //         (timesClicked1 * 10) % 255
+  //       }, ${(timesClicked1 * 30) % 255})`;
+  //       setTimesClicked1(timesClicked1 + 1);
+  //       // setTimesClicked1((prevVal) => prevVal + 1);
+  //       console.log("Change!", timesClicked1);
+  //     }, 500);
+  //   }
+  // }, []);
+  // useEffect(() => {
+  //   // Interval correct way of doing
+  //   let intervalId;
+  //   intervalId = setInterval(() => {
+  //     if (paraRef.current) {
+  //       paraRef.current.style.color = `rgb(255, ${
+  //         (colorNumberRef.current * 10) % 255
+  //       }, ${(colorNumberRef.current * 30) % 255})`;
+  //       colorNumberRef.current = colorNumberRef.current + 1;
+  //       // Bad way. No use of React!
+  //       // paraRef.current.innerHTML = `Hey, you clicked ${colorNumberRef.current} times!`;
+  //       //
+  //       // Correct way of using React, Re Rendering!
+  //       setTimesClicked1(colorNumberRef.current);
+  //       console.log("Change!", colorNumberRef.current);
+  //     }
+  //   }, 500);
+  //   return () => {
+  //     console.log("Destructor!");
+  //     if (intervalId) {
+  //       clearInterval(intervalId);
+  //     }
+  //   };
+  // }, []);
+  useEffect(() => {
+      // Interval Perfect way of doing
+      let intervalId;
+      let colorNumCounter = 0;
       intervalId = setInterval(() => {
-        paraRef.current.style.color = `rgb(255, ${
-          (colorNumberRef.current * 10) % 255
-        }, ${(colorNumberRef.current * 30) % 255})`;
-        colorNumberRef.current = colorNumberRef.current + 1;
-        // Bad way. No use of React!
-        // paraRef.current.innerHTML = `Hey, you clicked ${colorNumberRef.current} times!`;
-        //
-        // Correct way of using React, Re Rendering!
-        setTimesClicked1(colorNumberRef.current);
-        console.log("Change!", colorNumberRef.current);
+        if (paraRef.current) {
+          paraRef.current.style.color = `rgb(255, ${
+            (colorNumCounter * 10) % 255
+          }, ${(colorNumCounter * 30) % 255})`;
+          colorNumCounter = colorNumCounter + 1;
+          setTimesClicked1(colorNumCounter);
+          console.log("Change!", colorNumCounter);
+        }
       }, 500);
-      //
-      // Infinity Loop
-      //  paraRef.current.style.color = `rgb(255, ${(timesClicked1 * 10) % 255}, ${
-      //    (timesClicked1 * 30) % 255
-      //  })`;
-      //  setTimesClicked1(timesClicked1 + 1);
-      //  console.log("Change!", timesClicked1);
-    }
-    return () => {
-      console.log("Destructor!");
-      if (intervalId) {
-        clearInterval(intervalId);
-      }
-    };
+      return () => {
+        console.log("Destructor!");
+        if (intervalId) {
+          clearInterval(intervalId);
+        }
+      };
   }, []);
   return (
     <main className="py-12 flex items-center flex-col justify-evenly font-[family-name:var(--font-geist-sans)]">
