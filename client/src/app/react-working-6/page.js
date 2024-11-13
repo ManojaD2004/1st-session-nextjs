@@ -72,7 +72,7 @@ export default function Home() {
             ele.userName === "You" ? (
               <div>
                 <div
-                  className="text-red-300 float-right bg-teal-700 inline-block p-4 rounded-lg"
+                  className="text-yellow-300 float-right bg-red-500 inline-block p-4 rounded-lg"
                   key={index}
                 >
                   {ele.msg}{" "}

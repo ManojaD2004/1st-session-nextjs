@@ -6,10 +6,7 @@ export default function Home() {
   const [timesClicked2, setTimesClicked2] = useState(0);
   const colorNumberRef = useRef(0);
   const paraRef = useRef();
-  useEffect(() => {
-    // use effect do job after rendering the page, in the end it does its job
-    console.log("Do job at the end!");
-  }, []);
+  console.log("Hi Function loaded!");
   // useEffect(() => {
   //   // Infinity Loop
   //   setTimesClicked1(timesClicked1 + 1);
@@ -23,15 +20,15 @@ export default function Home() {
   // useEffect(() => {
   //   if (paraRef.current) {
   //     // Get Any Properties
-  //     // console.log(paraRef.current.style);
+  //     console.log(paraRef.current.style);
   //     //
   //     // Interval wrong way of doing
   //     setInterval(() => {
   //       paraRef.current.style.color = `rgb(255, ${
   //         (timesClicked1 * 10) % 255
   //       }, ${(timesClicked1 * 30) % 255})`;
-  //       setTimesClicked1(timesClicked1 + 1);
-  //       // setTimesClicked1((prevVal) => prevVal + 1);
+  //       // setTimesClicked1(timesClicked1 + 1);
+  //       setTimesClicked1((prevVal) => prevVal + 1);
   //       console.log("Change!", timesClicked1);
   //     }, 500);
   //   }
@@ -66,6 +63,7 @@ export default function Home() {
       let colorNumCounter = 0;
       intervalId = setInterval(() => {
         if (paraRef.current) {
+          // 
           paraRef.current.style.color = `rgb(255, ${
             (colorNumCounter * 10) % 255
           }, ${(colorNumCounter * 30) % 255})`;

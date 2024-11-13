@@ -22,7 +22,7 @@ export default function Home() {
         {isMount === true && (
           <MyPComp
             userName="Stark"
-            speed={1000}
+            speed={100}
             timesClicked1={timesClicked1}
             setTimesClicked1={setTimesClicked1}
           />
